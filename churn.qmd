@@ -1,0 +1,73 @@
+---
+title: "telco churn"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(randomForest)
+library(caret)
+library(readr)
+telco <- read_csv("~/Downloads/data/telco.csv")
+```
+
+#### Data Cleaning
+
+```{r}
+telco %>% 
+  mutate(Churn = ifelse(Churn == "No",0,1)) %>% 
+  select(-customerID)
+```
+
+#### Initial Random Forest
+
+```{r}
+set.seed(1031)
+
+index <- sample(1:nrow(telco), 0.8*nrow(telco))
+
+train_data <- telco[index, ]
+test_data  <- telco[-index, ]
+
+rf_model <- randomForest(as.factor(Churn) ~ ., 
+                         data = train_data, 
+                         ntree = 500, 
+                         importance = TRUE,
+                         na.action=na.omit)
+rf_model
+```
+
+```{r}
+varImpPlot(rf_model)
+importance(rf_model)
+prob_leaving <- predict(rf_model, newdata = train_data, type = "prob")
+head(prob_leaving)
+```
+
+```{r}
+predictions <- predict(rf_model, newdata = test_data)
+confusionMatrix(predictions, as.factor(test_data$Churn))
+```
+
+#### Being More Sensitive to Churn
+
+```{r}
+n_yes <- sum(train_data$Churn == "Yes")
+
+rf_sensitive <- randomForest(as.factor(Churn) ~ ., 
+                           data = train_data, 
+                           ntree = 500,
+                           sampsize = c("No" = n_yes, "Yes" = n_yes),
+                           importance = TRUE,
+                           na.action = na.omit)
+
+rf_sensitive
+
+prediction <- predict(rf_sensitive, newdata = test_data)
+confusionMatrix(prediction, as.factor(test_data$Churn))
+```
+
+```{r}
+varImpPlot(rf_sensitive)
+```
