@@ -70,8 +70,16 @@ prediction <- predict(rf_sensitive, newdata = test_data)
 confusionMatrix(prediction, as.factor(test_data$Churn))
 ```
 
+#### Important Churn Factors
+
 ```{r}
-varImpPlot(rf_sensitive)
+varImpPlot(rf_sensitive, main = "What makes customers leave?",pch= 16)
+importance_scores <- as.data.frame(importance(rf_sensitive))
+importance_scores[order(-importance_scores$MeanDecreaseAccuracy), ]
 ```
 
-### Neural Net
+-   Tenure
+
+-   Total Charges
+
+-   Contract
