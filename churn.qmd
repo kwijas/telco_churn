@@ -2,6 +2,7 @@
 title: "telco churn"
 format: html
 editor: visual
+author: Kellie Wijas
 ---
 
 ```{r}
