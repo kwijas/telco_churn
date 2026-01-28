@@ -20,7 +20,9 @@ telco %>%
   select(-customerID)
 ```
 
-#### Initial Random Forest
+### Random Forest 
+
+#### Initial Model
 
 ```{r}
 set.seed(1031)
@@ -71,3 +73,5 @@ confusionMatrix(prediction, as.factor(test_data$Churn))
 ```{r}
 varImpPlot(rf_sensitive)
 ```
+
+### Neural Net
