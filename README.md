@@ -1,5 +1,5 @@
 # Predicting Churn 
-Churn refers to those who decide to leave a company and take their business elsewhere. For a company, losing out on customers can be detramental to their future endevors. Therefore, it is imporant to understand the key components that drive a customer to leave in order to prevent churn from happening. Here, a random forest will be used to determine these leading factors. 
+Churn refers to those who decide to leave a company and take their business elsewhere. For a company, losing out on customers can be detrimental to their future endevors. Therefore, it is imporant to understand the key components that drive a customer to leave in order to prevent churn from happening. Here, a random forest will be used to determine these leading factors. 
 
 #### Data Cleaning
 In order to prevent the ID of the customer from becoming a misleading imporant factor, it was removed from the dataset. 
@@ -44,22 +44,28 @@ Here we are able to see tenure and total charges are the most impactful, followe
 
 In taking a closer look at these specific traits (*with the help of PowerBI*):
 1. Tenure
-   - The longer someone is with a company, the less likey they are to leave. Thus, a company should focus on newer customers in order to make sure they stay. 
+
+ - The longer someone is with a company, the less likey they are to leave. Thus, a company should focus on newer customers in order to make sure they stay. 
 <p align="center">
  <img width="400" height="350" alt="Screenshot 2026-01-28 at 3 13 29 PM" src="https://github.com/user-attachments/assets/5f6c1220-3729-444a-b064-04555251fee9" />
 
 </p>
 
 2. Total Charges
-   - Total cha
+
+ - Customers seem to leave more often when their bill is between $68 and $94 dollars. They have yet to spend a large portion of money, thus, they are more inclined to search for better offers. Therefore, a company should focus on those who don't spend a vast amount. 
 <p align="center">
  <img width="400" height="300" alt="Screenshot 2026-01-28 at 3 17 01 PM" src="https://github.com/user-attachments/assets/3e7b199a-8601-492d-90fa-f51e144b3444" />
 </p>
 3. Contract
+
+- Those on a month-to-month contract are 6.32 times more likely to churn then any other contract. Since those who are in two and one year contracts are less likely to leave, the company should try to offer more enticing deals or check in on the month-to-month users more frequently. 
 <p align="center">
  <img width="399" height="400" alt="Screenshot 2026-01-28 at 3 11 23 PM" src="https://github.com/user-attachments/assets/0727cebe-9c7e-45ce-89ed-43813147b19d" />
 
   </p>
 
 
-## Recommendations 
+## Final Thoughts
+
+There are many personal factors that drive a person to leave a company. However, looking at some of the characteristics of those who churn can help a company save a customer before they take their buisness elsewhere. In this telco dataset, it appears that the amount of time a person is with a company, their monthly charges, as well as the type of contract they entered are key factors that increase a person to churn. Knowing all this information can help a company save their relationship by checking in with a customer, offering "limited time" deals, asking for feedback, etc. 
